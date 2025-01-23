@@ -1,14 +1,20 @@
-import { View, Text } from 'react-native'
-import React from 'react'
-import HomeScreen from '../screens/AppScreens/HomeScreen';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import React from 'react';
+import { createStackNavigator } from '@react-navigation/stack';
+import { BottomTabNavigator } from './BottomTabNavigator';
 
-const AppStack = createBottomTabNavigator();
+const AppStack = createStackNavigator();
 
-const AppStackNavigator = () => (
-    <AppStack.Navigator initialRouteName='HomeScreen'>
-        <AppStack.Screen name='HomeScreen' component={HomeScreen} options={{ headerShown: false }} />
-    </AppStack.Navigator>
-)
+const AppStackNavigator = ({ onLogout }: any) => {
+    return (
+        <AppStack.Navigator initialRouteName="BottomTabNavigator">
+            <AppStack.Screen
+                name="BottomTabNavigator"
+                options={{ headerShown: false }}
+            >
+                {(props) => <BottomTabNavigator {...props} onLogout={onLogout} />}
+            </AppStack.Screen>
+        </AppStack.Navigator>
+    );
+};
 
-export default AppStackNavigator
+export default AppStackNavigator;

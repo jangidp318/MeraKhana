@@ -1,11 +1,24 @@
 import React, { useEffect } from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
 import GlobalColors from "../styles/GlobalColors";
+import { checkIsLoggedIn } from "../utils/functions/checkIsLoggedIn";
 
 const SplashScreen = ({ navigation }: any) => {
+
+
+
     useEffect(() => {
         const timer = setTimeout(() => {
-            navigation.replace("Auth");
+            checkIsLoggedIn().then(
+                res => {
+                    if (res) {
+                        navigation.replace("App");
+                    } else {
+                        navigation.replace("Auth");
+                    }
+                }
+            )
+
         }, 3000);
 
         return () => clearTimeout(timer);
