@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
+import GlobalColors from "../styles/GlobalColors";
 
 const SplashScreen = ({ navigation }: any) => {
     useEffect(() => {
         const timer = setTimeout(() => {
-            navigation.replace("Home");
+            navigation.replace("Auth");
         }, 3000);
 
         return () => clearTimeout(timer);
@@ -13,7 +14,7 @@ const SplashScreen = ({ navigation }: any) => {
     return (
         <View style={styles.container}>
             <Image
-                source={require("./assets/zomato_logo.png")} 
+                source={require("../assets/images/zomato-white-logo.png")}
                 style={styles.logo}
                 resizeMode="contain"
             />
@@ -25,7 +26,7 @@ const SplashScreen = ({ navigation }: any) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#fc3c44",
+        backgroundColor: GlobalColors.primary,
         justifyContent: "center",
         alignItems: "center",
     },

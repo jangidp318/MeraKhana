@@ -4,6 +4,5 @@ export const GlobalStyles = StyleSheet.create({
     screenContainer: {
         flex: 1,
         padding: 10,
-    }
-    
+    },
 })
